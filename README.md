@@ -1,24 +1,33 @@
-# README
+# Rails CLoud Run Sample
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
 
-Things you may want to cover:
+ * gcloud CLI
+ * ruby 2.5+
+ * rails 5.1+
 
-* Ruby version
+## Deploy
 
-* System dependencies
+Prepare required services.
 
-* Configuration
+### Create Cloud SQL instance
 
-* Database creation
+Create Cloud SQL instance and database.
 
-* Database initialization
+```
+./scripts/cloud_sql.sh
+```
 
-* How to run the test suite
+### Push image to Container Registry
 
-* Services (job queues, cache servers, search engines, etc.)
+Create image and push it to Container registry.
 
-* Deployment instructions
+```
+./scripts/build.sh
+```
 
-* ...
+### Deploy to Cloud Run
+
+```
+./scripts/deploy.sh
+```
