@@ -1,21 +1,23 @@
 default: &default
-  adapter: mysql2
-  encoding: utf8
+  adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: <%= MYSQL_ROOT_PASSWORD %>
-  socket: <%= MYSQL_SOCKET %>
+  timeout: 5000
 
 development:
   <<: *default
-  database: rails-cloud-run-sample_development
+  database: db/development.sqlite3
 
 test:
   <<: *default
-  database: rails-cloud-run-sample_test
+  database: db/test.sqlite3
 
 production:
-  <<: *default
+  adapter: mysql2
+  encoding: utf8
+  # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  socket: <%= ENV['MYSQL_SOCKET'] %>
   database: sample
   username: root
   

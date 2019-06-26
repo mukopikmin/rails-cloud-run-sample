@@ -1,5 +1,7 @@
 #! /bin/sh
 
+set -ex 
+
 image=rails-cloud-run-sample
 project=$1
 registry=gcr.io/$project
